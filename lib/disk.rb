@@ -1,3 +1,4 @@
+#Класс содержит информацию о дисках
 class Disk < Product
   attr_accessor :title, :singer, :genre, :year
 
@@ -14,6 +15,7 @@ class Disk < Product
     "Альбом #{@singer} - \"#{@title}\", #{@genre}, #{year}, #{super}"
   end
 
+  #Обновление свойств экземпляра
   def update(params)
     super
 
@@ -23,6 +25,7 @@ class Disk < Product
     @year = params[:year] if params[:year]
   end
 
+  #Считывает свойства экземпляра класса из файла
   def self.from_file(file)
     lines = File.readlines(file, encoding: 'UTF-8', chomp: true)
 

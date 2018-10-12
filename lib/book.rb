@@ -1,3 +1,4 @@
+#Класс содержит информацию о книгах
 class Book < Product
   attr_accessor :title, :genre, :author
 
@@ -13,6 +14,7 @@ class Book < Product
     "Книга \"#{@title}\", #{@genre}, автор - #{@author}, #{super}"
   end
 
+  #Обновление свойств экземпляра
   def update(params)
     super
 
@@ -21,6 +23,7 @@ class Book < Product
     @author = params[:author] if params[:author]
   end
 
+  #Считывает свойства экземпляра класса из файла
   def self.from_file(file)
     lines = File.readlines(file, encoding: 'UTF-8', chomp: true)
 

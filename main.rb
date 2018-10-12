@@ -15,20 +15,21 @@ require_relative 'lib/cart'
 require_relative 'lib/product_collection'
 require_relative 'lib/methods'
 
-
-
-
+#Создаем корзину
 cart = Cart.new
 
+#Получаем коллекцию всех товаров в магазине из тексотвых файлов в папке data
 collection = ProductCollection.from_dir("#{File.dirname(__FILE__)}/data").to_a
 
 user_choice = nil
 
+#Выбираем, что купить
 while user_choice != 0
   puts
   puts "Что хотите купить:"
   puts
 
+  #Выводим все товары
   print_collection(collection)
 
   puts "0. Выход"
@@ -36,10 +37,12 @@ while user_choice != 0
 
   user_choice = STDIN.gets.to_i
 
+  #Выход из цикла
   break if user_choice == 0
 
   chosen_product = collection[user_choice - 1]
 
+  #Если товар есть в наличии, добавляем его во корзину
   if product_present?(chosen_product)
     cart.add(chosen_product)
 
@@ -51,8 +54,10 @@ while user_choice != 0
   end
 end
 
+#Итоговый список покупок
 total_list = cart.list
 
+#Выводим итоговый непустой список покупок
 unless total_list.empty?
   puts "Вы купили:"
   puts

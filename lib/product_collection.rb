@@ -1,5 +1,8 @@
+#Класс содержит информацию о наборе продуктов
 class ProductCollection
 
+  #Константы с названиями соответствующих классов
+  #и путями до файлов с данными каждого типа
   PRODUCT_TYPES = {
     movie: {dir: "films", class: Movie},
     book: {dir: "books", class: Book},
@@ -10,6 +13,8 @@ class ProductCollection
     @products = products
   end
 
+  #Создает экземпляры классов из файлов с данными
+  #из соответствующих папок
   def self.from_dir(data_path)
     products = []
 
@@ -22,6 +27,7 @@ class ProductCollection
       end
     end
 
+    #Вызываем конструктор этоже класса
     self.new(products)
   end
 
@@ -29,6 +35,7 @@ class ProductCollection
     @products
   end
 
+  #Сортировка списка товаров
   def sort(params)
     case params[:by]
     when :title

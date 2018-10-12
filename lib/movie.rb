@@ -1,3 +1,4 @@
+#Класс содержит информацию о фильмах
 class Movie < Product
   attr_accessor :title, :year, :director
 
@@ -13,6 +14,7 @@ class Movie < Product
     "Фильм \"#{@title}\", #{@year}, реж. #{@director}, #{super}"
   end
 
+  #Обновление свойств экземпляра
   def update(params)
     super
 
@@ -21,6 +23,7 @@ class Movie < Product
     @director = params[:director] if params[:director]
   end
 
+  #Считывает свойства экземпляра класса из файла
   def self.from_file(file)
     lines = File.readlines(file, encoding: 'utf-8', chomp: true)
 
