@@ -7,7 +7,12 @@ def print_collection(collection)
   end
 end
 
-# Возвращает есть ли товар в наличии
+#Возвращает есть ли товар в наличии
 def product_present?(product)
   product.amount > 0
+end
+
+#Правильно ли пользователь сделал выбор
+def right_choice?(user_choice, length)
+  (1..length).include? user_choice
 end

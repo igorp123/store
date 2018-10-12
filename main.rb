@@ -26,7 +26,7 @@ user_choice = nil
 #Выбираем, что купить
 while user_choice != 0
   puts
-  puts "Что хотите купить:"
+  puts "Что хотите купить?"
   puts
 
   #Выводим все товары
@@ -39,6 +39,10 @@ while user_choice != 0
 
   #Выход из цикла
   break if user_choice == 0
+
+  #Запустить новый шаг цикла, если пользователь ввел
+  #несуществующий номер товара
+  next unless right_choice?(user_choice, collection.size)
 
   chosen_product = collection[user_choice - 1]
 
